@@ -12,17 +12,9 @@
     "plugin:prettier/recommended",
     "plugin:storybook/recommended"
   ],
-  "ignorePatterns": [
-    "dist",
-    ".eslintrc.cjs"
-  ],
+  "ignorePatterns": ["dist", ".eslintrc.cjs"],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "react-refresh",
-    "react",
-    "prettier",
-    "jest"
-  ],
+  "plugins": ["react-refresh", "react", "prettier", "jest"],
   "settings": {
     "react": {
       "version": "detect"
@@ -30,7 +22,7 @@
   },
   "rules": {
     "react-refresh/only-export-components": [
-      "warn",
+      "off",
       {
         "allowConstantExport": true
       }
@@ -38,9 +30,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "tests/**/*"
-      ],
+      "files": ["tests/**/*"],
       "env": {
         "jest": true
       }

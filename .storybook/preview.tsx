@@ -1,4 +1,6 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
+import { ThemeContextProvider } from '../src/shared/theme/ThemeContextProvider';
 
 const preview: Preview = {
   parameters: {
@@ -9,6 +11,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeContextProvider>
+        <Story />
+      </ThemeContextProvider>
+    ),
+  ],
 };
 
 export default preview;

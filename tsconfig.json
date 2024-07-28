@@ -14,9 +14,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "types": ["jest", "@testing-library/jest-dom"],
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["./src/*"]
+    },
     "downlevelIteration": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "./jest.setup.ts",
+    "@testing-library/jest-dom",
+    "./src/shared/config/jestProvider.tsx"
+  ]
 }

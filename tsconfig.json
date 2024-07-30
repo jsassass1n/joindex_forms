@@ -26,6 +26,6 @@
     "src",
     "./jest.setup.ts",
     "@testing-library/jest-dom",
-    "./src/shared/config/jestProvider.tsx"
+    "src/shared/providers/JestProvider/jestProvider.tsx"
   ]
 }

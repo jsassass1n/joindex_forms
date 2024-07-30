@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ButtonProps, ButtonTheme } from './Button';
+import { commonStyles } from '@src/shared/helpers/styled-component/common.styles';
 
 export const StyledButton = styled.button<ButtonProps>`
   color: ${(props) => props.theme.colors.primary};
@@ -7,14 +8,18 @@ export const StyledButton = styled.button<ButtonProps>`
   letter-spacing: 1px;
   border: none;
   border-radius: 10px;
-  padding: 12px 18px;
   cursor: pointer;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${(props) =>
     props.variant === ButtonTheme.PRIMARY &&
     `
     background-color: ${props.theme.colors.primary};
-    color: ${props.theme.colors.white}
+    color: ${props.theme.colors.invertedPrimary};
     `}
   ${(props) =>
     props.variant === ButtonTheme.DEFAULT &&
@@ -26,7 +31,7 @@ export const StyledButton = styled.button<ButtonProps>`
     props.variant === ButtonTheme.DANGER &&
     `
     background-color: ${props.theme.colors.red};
-    color: ${props.theme.colors.white}
+    color: ${props.theme.colors.white};
     `}
   ${(props) =>
     props.variant === ButtonTheme.SECONDARY && `background-color: ${props.theme.colors.gray};`}
@@ -35,13 +40,19 @@ export const StyledButton = styled.button<ButtonProps>`
     props.variant === ButtonTheme.SUCCESS &&
     `
     background-color: ${props.theme.colors.green};
-    color: ${props.theme.colors.white}
+    color: ${props.theme.colors.white};
     `}
     
   ${(props) =>
     props.variant === ButtonTheme.WARNING &&
     `
     background-color: ${props.theme.colors.orange};
-    color: ${props.theme.colors.white}
+    color: ${props.theme.colors.white};
     `}
+
+    &:disabled {
+    opacity: 0.85;
+  }
+
+  ${commonStyles};
 `;

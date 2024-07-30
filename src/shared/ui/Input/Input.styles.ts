@@ -1,24 +1,33 @@
 import styled from 'styled-components';
 import { InputProps } from './Input';
+import { commonStyles } from '@src/shared/helpers/styled-component/common.styles';
 
-export const InputWrapper = styled.div`
+interface StyledInputProps extends InputProps {
+  $blured: boolean;
+}
+
+export const InputWrapper = styled.div<Omit<InputProps, 'onChange' | 'value'>>`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  ${commonStyles};
 `;
 
-export const StyledInput = styled.input<Omit<InputProps, 'label'>>`
+export const StyledInput = styled.input<Omit<StyledInputProps, 'onChange'>>`
   border: ${(props) => `1px solid ${props.theme.colors.inputBorder}`};
-
+  background-color: ${(props) => props.theme.colors.invertedPrimary};
   outline: none;
   padding: 10px;
   border-radius: 10px;
   transition: 0.3s;
-
+  color: ${(props) => props.theme.colors.primary};
+  border-color: ${(props) => props.theme.colors.inputBorderColor};
   &:focus {
     border-color: ${(props) => props.theme.colors.blue};
   }
 
-  ${(props) => props.error && `border-color: ${props.theme.colors.red}`}
+  ${({ error, value, ...props }) =>
+    ((!error && props.$blured && !value) || error) && `border-color: ${props.theme.colors.red}`};
 `;
 
 export const StyledLabel = styled.label`

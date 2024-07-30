@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import { ThemeContextProvider } from '../src/shared/theme/ThemeContextProvider';
+import { BrowserRouter } from 'react-router-dom';
 
 const preview: Preview = {
   parameters: {
@@ -14,7 +15,9 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <ThemeContextProvider>
-        <Story />
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
       </ThemeContextProvider>
     ),
   ],

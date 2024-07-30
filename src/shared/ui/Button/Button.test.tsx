@@ -1,4 +1,4 @@
-import { render, screen } from '@src/shared/config/jestProvider';
+import { render, screen } from '@src/shared/providers/JestProvider/jestProvider';
 import { Button, ButtonTheme } from './Button';
 
 describe('Button', () => {

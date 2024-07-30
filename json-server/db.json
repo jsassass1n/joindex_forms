@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": "1", "email": "test@gmail.com", "password": "test" },
+    { "id": "2", "email": "test2@gmail.com", "password": "test" }
+  ],
+  "forms": [
+    { "id": "1", "forms": [{ "email": false, "username": true }], "userId": "1" },
+    { "id": "2", "forms": [{ "email": false, "username": true }], "userId": "2" }
+  ]
+}

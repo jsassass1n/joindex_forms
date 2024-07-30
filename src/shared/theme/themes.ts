@@ -2,7 +2,6 @@ export type AppThemes = 'dark' | 'light';
 
 export const light = {
   colors: {
-    primary: '#131313',
     text: '#131313',
     red: '#E53E3E',
     orange: '#DD6A1F',
@@ -13,6 +12,9 @@ export const light = {
     white: '#fff',
     black: '#131313',
     inputBorder: '#e1e1e1',
+    primary: '#131313',
+    invertedPrimary: '#ffffff',
+    inputBorderColor: '#EDF2F6',
   },
   fonts: 'sans-serif, Roboto',
   fontSizes: {
@@ -24,7 +26,6 @@ export const light = {
 
 export const dark = {
   colors: {
-    primary: '#fff',
     text: '#fff',
     red: '#E53E3E',
     orange: '#DD6A1F',
@@ -35,6 +36,9 @@ export const dark = {
     white: '#fff',
     black: '#131313',
     inputBorder: '#e1e1e1',
+    primary: '#fff',
+    invertedPrimary: '#131313',
+    inputBorderColor: '#4c4c4c',
   },
   fonts: 'sans-serif, Roboto',
   fontSizes: {

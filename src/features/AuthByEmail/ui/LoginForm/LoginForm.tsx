@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Input } from '@src/shared/ui/Input/Input';
 import { FormErrorText, LoginFormCard, LoginFromBottomText } from './LoginForm.styles';
 import { Button, ButtonTheme } from '@src/shared/ui/Button/Button';
@@ -30,7 +31,7 @@ export const LoginForm = () => {
   const handleLoginSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      dispatch(loginByEmail({ email, password }));
+      dispatch(loginByEmail({ email, password }) as any);
     },
     [email, password, dispatch]
   );

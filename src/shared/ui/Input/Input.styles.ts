@@ -6,14 +6,18 @@ interface StyledInputProps extends InputProps {
   $blured: boolean;
 }
 
-export const InputWrapper = styled.div<Omit<InputProps, 'onChange' | 'value'>>`
+export const InputWrapper = styled.div<
+  Omit<InputProps, 'onChange' | 'value' | 'onBlur' | 'onFocus' | 'onError' | 'label'>
+>`
   display: flex;
   flex-direction: column;
   width: 100%;
   ${commonStyles};
 `;
 
-export const StyledInput = styled.input<Omit<StyledInputProps, 'onChange'>>`
+export const StyledInput = styled.input<
+  Omit<StyledInputProps, 'onChange' | 'onBlur' | 'onFocus' | 'onError' | 'label'>
+>`
   border: ${(props) => `1px solid ${props.theme.colors.inputBorder}`};
   background-color: ${(props) => props.theme.colors.invertedPrimary};
   outline: none;

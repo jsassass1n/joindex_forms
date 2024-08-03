@@ -1,14 +1,11 @@
+import { StyledCard } from '@src/shared/ui/Card/Card.styles';
 import styled from 'styled-components';
 
-export const LoginFormCard = styled.form`
+export const LoginFormCard = styled(StyledCard)`
   display: flex;
   flex-direction: column;
   width: 400px;
   align-items: center;
-  box-shadow: 5px 5px 75px -45px rgba(0, 0, 0, 0.64);
-
-  padding: 30px 30px;
-  border-radius: 15px;
 `;
 
 export const LoginFromBottomText = styled.p`

@@ -8,12 +8,12 @@ import { store } from '@src/shared/providers/ReduxProvider/store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeContextProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeContextProvider>
           <App />
-        </BrowserRouter>
-      </ThemeContextProvider>
-    </Provider>
+        </ThemeContextProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,35 +1,56 @@
-import { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react';
+import { ChangeEvent, FC, FocusEvent, InputHTMLAttributes } from 'react';
 import { InputWrapper, StyledError, StyledInput, StyledLabel } from './Input.styles';
 import {
   CombinedCommonStyles,
   getMarginsFromProps,
 } from '@src/shared/helpers/styled-component/getMarginsFromProps';
 
-type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+type HtmlInputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'onChange' | 'value' | 'onBlur' | 'onFocus' | 'onError' | 'label'
+>;
 
 export interface InputProps extends HtmlInputProps, CombinedCommonStyles {
-  label?: string;
+  label: string;
   error?: string;
-  blurError?: string;
-  onChange: (value: string) => void;
+  onChange: (name: string, value: string) => void;
+  onBlur?: (name: string, value: string, label: string) => void;
+  onFocus?: (name: string) => void;
   value: string;
+  customError?: string;
+  blured?: boolean;
+  focused?: boolean;
 }
 
 export const Input: FC<InputProps> = (props) => {
-  const [blured, setBlured] = useState<boolean>(false);
   const marginProps = getMarginsFromProps(props);
-  const { label, id, error, blurError, value, onChange, ...otherProps } = props;
+  const {
+    label,
+    id,
+    error,
+    blured = false,
+    onBlur,
+    onFocus,
+    value,
+    name,
+    onChange,
+    ...otherProps
+  } = props;
 
-  const handleBlur = () => {
-    setBlured(true);
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (onBlur) {
+      onBlur(e.target.name, e.target.value, label);
+    }
   };
 
-  const handleFocus = () => {
-    setBlured(false);
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+    if (onFocus) {
+      onFocus(e.target.name);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    onChange(e.target.name, e.target.value);
   };
 
   return (
@@ -43,9 +64,9 @@ export const Input: FC<InputProps> = (props) => {
         value={value}
         error={error}
         $blured={blured}
+        name={name}
         {...otherProps}
       />
-      {!error && blured && !value && <StyledError>{blurError}</StyledError>}
       {error && <StyledError>{error}</StyledError>}
     </InputWrapper>
   );

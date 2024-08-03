@@ -16,14 +16,14 @@ interface DynamicModuleLoaderProps {
 export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
   const { children, name, reducer, removeAfterUnmount = true } = props;
   const store = useStore() as ReduxStoreWithManager;
-  console.log(store.reducerManager.getReducerMap());
+
   useEffect(() => {
     if (!store.reducerManager.getReducerMap()[name]) {
-      store.reducerManager.add(name, reducer);
+      store.reducerManager.add(name as keyof StateSchema, reducer);
     }
     return () => {
       if (removeAfterUnmount) {
-        store.reducerManager.remove(name);
+        store.reducerManager.remove(name as keyof StateSchema);
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
